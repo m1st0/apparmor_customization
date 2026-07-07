@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Maulik Mistry <mistry01.com>
-# Copyright (c) 2025 Maulik Mistry
+# Copyright (c) 2025–2026 Maulik Mistry
 #
 # This project is licensed under the BSD License. See the LICENSE.txt file for details.
 #
@@ -11,7 +11,11 @@
 
 echo "Removing AppArmor customization symlinks..."
 
-for link in /etc/apparmor.d/my_customizations /etc/apparmor.d/local/my_customizations; do
+for profile in /etc/apparmor.d/local/my_customizations/*(N); do
+    [[ -f "$profile" ]] && sudo apparmor_parser -R "$profile"
+done
+
+for link in /etc/apparmor.d/load_customizations /etc/apparmor.d/local/my_customizations; do
   if [ -L "$link" ]; then
     echo "Remove symlink $link? [y/N]"
     read -r answer

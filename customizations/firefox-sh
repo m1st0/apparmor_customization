@@ -1,17 +1,17 @@
-# AppArmor policy for firefox script
-
+# AppArmor policy for Firefox script
+#
 # Maulik Mistry <mistry01.com>
-# Copyright (c) 2025 Maulik Mistry
+# Copyright (c) 2025–2026 Maulik Mistry
 #
 # This project is licensed under the BSD License. See the LICENSE.txt file for details.
 #
 # If you appreciate my work or help, consider supporting me through donations.
 # You can donate via Venmo at  or PayPal at https://www.paypal.com/paypalme/m1st0
 
-include <tunables/global>
+#include <tunables/global>
 
 profile firefox-sh @{HOME}/my_applications/firefox.sh flags=(unconfined) {
-    userns,
+    @{exec_path} mr,
 
 }
 
