@@ -1,16 +1,15 @@
-# AppArmor policy for Firefox custom launcher
+# SPDX-FileCopyrightText: Copyright (c) 2025-2026 Maulik Mistry
+# SPDX-License-Identifier: Apache-2.0
 #
-# Maulik Mistry <mistry01.com>
-# Copyright (c) 2025–2026 Maulik Mistry
+# firefox-custom - AppArmor policy for Firefox custom location.
 #
-# This project is licensed under the BSD License. See the LICENSE.txt file for details.
-#
-# If you appreciate my work or help, consider supporting me through donations.
-# You can donate via Venmo at  or PayPal at https://www.paypal.com/paypalme/m1st0
+# Author: Maulik Mistry
+# Please share support: https://www.paypal.com/paypalme/m1st0
+#                       https://venmo.com/code?user_id=3319592654995456106&created=1753283702
 
 #include <tunables/global>
 
-profile firefox @{HOME}/my_applications/firefox/{firefox,firefox-bin,updater} flags=(unconfined) {
+profile firefox-custom @{HOME}/my_applications/firefox/{firefox,firefox-bin,updater} flags=(unconfined) {
     userns,
 
     @{exec_path} mr,
