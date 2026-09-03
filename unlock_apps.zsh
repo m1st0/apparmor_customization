@@ -17,7 +17,7 @@ messenger_std "Installing AppArmor customizations..."
 # Link the AppArmor customization loader.
 loader="/etc/apparmor.d/load_customizations"
 if [[ ! -L "$loader" ]]; then
-  if sudo ln -s "$(pwd)/load_customizations" "$loader"; then
+  if sudo ln -s "$SCRIPT_DIR/load_customizations" "$loader"; then
     messenger_std "Linked load_customizations."
   else
     messenger_end "Failed to link load_customizations."
@@ -30,7 +30,7 @@ fi
 # Link the custom profile directory.
 custom_dir="/etc/apparmor.d/local/my_customizations"
 if [[ ! -L "$custom_dir" ]]; then
-  if sudo ln -s "$(pwd)/customizations" "$custom_dir"; then
+  if sudo ln -s "$SCRIPT_DIR/customizations" "$custom_dir"; then
     messenger_std "Linked customizations."
   else
     messenger_end "Failed to link customizations."
